@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-struct TestPFixture : public testing::TestWithParam<int>
+class TestPFixture : public ::testing::TestWithParam<int>
 {
 };
 
