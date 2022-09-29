@@ -8,9 +8,14 @@ include(FetchContent)
 
 FetchContent_Declare(
   googletest
+  # GIT_REPOSITORY https://github.com/Nordix/googletest.git
+  # GIT_TAG 385bd4fba0fbbd524026c5cdc8a3618d6e65ec56
   GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG release-1.12.1
-  #  GIT_TAG release-1.10.0
+  GIT_TAG c43b916a9623e052860f59e52f71de1974ed8823 # With fix
+  #GIT_TAG e23cdb78e9fef1f69a9ef917f447add5638daf2a # Before fix
+  # GIT_TAG release-1.12.1
+  # GIT_TAG release-1.12.1
+  # GIT_TAG release-1.10.0
 )
 FetchContent_MakeAvailable(googletest)
 

@@ -12,6 +12,13 @@ cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build
 cmake --build build
 ```
 
+## Get Clang Tidy
+```
+sudo apt update
+apt search clang-tidy
+sudo apt install clang-tidy
+```
+
 # Check TEST_F
 ```
 clang-tidy -system-headers -checks='-*,cppcoreguidelines-special-member-functions' -p=build test_f.cc
