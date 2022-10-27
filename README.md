@@ -10,6 +10,20 @@ Default set variable `dummy` in: gtest-death-test.cc:1301:24
 ```
 cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build
 cmake --build build
+
+# Change and rebuild googletest only
+cd build
+edit code in _deps/googletest-src/googletest/..
+make -C _deps/googletest-build
+make
+
+# Build googletest manually
+mkdir mybuild && cd mybuild
+cmake -Dgtest_build_tests=ON -Dgmock_build_tests=ON ..
+make
+
+# Run clang-format on changes:
+clang-format -i --style=file <file>
 ```
 
 ## Get Clang Tidy
@@ -22,11 +36,13 @@ sudo apt install clang-tidy
 # Check TEST_F
 ```
 clang-tidy -system-headers -checks='-*,cppcoreguidelines-special-member-functions' -p=build test_f.cc
+clang-tidy -system-headers -checks='-*,cppcoreguidelines-avoid-non-const-global-variables' -p=build test_f.cc
 ```
 
 # Check TEST_P
 ```
 clang-tidy -system-headers -checks='-*,cppcoreguidelines-special-member-functions' -p=build test_p.cc
+clang-tidy -system-headers -checks='-*,cppcoreguidelines-avoid-non-const-global-variables' -p=build test_p.cc
 ```
 
 # Other
